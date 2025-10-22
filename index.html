@@ -3,124 +3,177 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ATC by Fiallo — Enlaces Oficiales</title>
+  <title>ATC by Fiallo — Links Oficiales</title>
+  <meta name="description" content="ATC by Fiallo · Impact Windows & Doors · Protección con ingeniería, seguridad con estilo. Llama, deja tu reseña y síguenos." />
   <meta name="theme-color" content="#0a3d72" />
   <style>
-    :root{ --bg:#0a1524; }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter; background:var(--bg)}
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; background: #0a1524; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter; }
 
-    /* CONTENEDOR PRINCIPAL (mobile-first, pensado para iPhone) */
-    .page{min-height:100dvh; display:grid; place-items:start center; padding:8px}
-    .card{width:min(430px,100%); background:linear-gradient(#dff0ff, #eaf4ff 40%, #dbeafe 100%); border-radius:22px; overflow:hidden; box-shadow:0 18px 50px rgba(0,0,0,.35)}
+    /* === LAYOUT GENERAL === */
+    .wrap {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-    /* HERO: fondo + LOGO a la IZQUIERDA + SLOGAN.png sobre la piscina */
-    .hero{position:relative; isolation:isolate}
-    .hero .bg{width:100%; height:auto; display:block}
-    .hero .logo{position:absolute; left:10px; top:10px; width:min(58%, 250px); max-width:260px; filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
-    /* Slogan imagen sobre la piscina: ajusta top segun veas en el telefono */
-    .hero .slogan{position:absolute; left:50%; transform:translateX(-50%); bottom:12%; width:min(92%, 360px); max-width:360px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
+    .stage {
+      position: relative;
+      width: min(430px, 95vw);
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      background: #000;
+    }
 
-    /* SECCION RESEÑAS + TELEFONO en dos columnas */
-    .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:12px; padding:12px 14px 4px}
-    .col{display:grid; justify-items:center; align-items:start; gap:8px}
-    .review-ico{width:64px; height:64px; border-radius:999px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.28))}
-    .stars{height:36px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.18))}
-    .call-ico{width:62px; height:62px; border-radius:999px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.28))}
-    .num{width:min(92%, 360px); max-width:300px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.18))}
+    /* === FONDO === */
+    .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-    /* SÍGUENOS (vertical, centrado) */
-    .sig{display:grid; place-items:center; padding:4px 14px}
-    .sig img{height:28px}
+    /* === ELEMENTOS === */
+    .el {
+      position: absolute;
+      display: block;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    }
 
-    /* CINCO ICONOS HORIZONTALES, JUSTIFICADOS */
-    .icons{display:grid; grid-template-columns: repeat(5, 1fr); gap:12px; justify-items:center; padding:8px 14px 14px}
-    .icons a{display:grid; place-items:center}
-    .ico{width:64px; height:64px; border-radius:999px; filter:drop-shadow(0 10px 20px rgba(0,0,0,.25)); animation:float 5s ease-in-out infinite}
-    .icons a:nth-child(2) .ico{animation-delay:.3s}
-    .icons a:nth-child(3) .ico{animation-delay:.6s}
-    .icons a:nth-child(4) .ico{animation-delay:.9s}
-    .icons a:nth-child(5) .ico{animation-delay:1.2s}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    /* Logo grande (izquierda arriba) */
+    .logo {
+      left: 2.5%;
+      top: 2.5%;
+      width: 58%;
+      max-width: 260px;
+    }
 
-    /* COMMERCIAL & RESIDENTIAL centrado al final */
-    .footer{display:grid; place-items:center; padding:0 14px 18px}
-    .footer img{height:26px; opacity:.98}
+    /* Slogan sobre piscina */
+    .slogan {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 23%;
+      width: 88%;
+    }
 
-    /* Desktop suave */
-    @media (min-width:768px){
-      .card{width:min(560px,100%)}
-      .hero .logo{left:16px; top:16px; max-width:320px}
-      .hero .slogan{bottom:14%}
-      .ico{width:70px; height:70px}
-      .review-ico{width:70px; height:70px}
-      .call-ico{width:68px; height:68px}
-      .stars{height:42px}
-      .num{max-width:340px}
+    /* Review y estrellas (izquierda inferior) */
+    .review {
+      left: 5%;
+      bottom: 15%;
+      width: 18%;
+    }
+    .stars {
+      left: 22%;
+      bottom: 14.5%;
+      width: 55%;
+    }
+
+    /* Call y número (derecha inferior) */
+    .call {
+      right: 6%;
+      bottom: 15%;
+      width: 16%;
+    }
+    .num {
+      right: 5%;
+      bottom: 11.8%;
+      width: 56%;
+    }
+
+    /* Síguenos centrado */
+    .sig {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 9%;
+      width: 48%;
+    }
+
+    /* Íconos: fila justificada */
+    .icons {
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      bottom: 4.8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .icons img {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      filter: drop-shadow(0 5px 12px rgba(0,0,0,0.25));
+      transition: transform 0.2s ease;
+    }
+
+    .icons img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Commercial centrado abajo */
+    .commercial {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 1.8%;
+      width: 60%;
+    }
+
+    @media (min-width: 768px) {
+      .stage { width: min(500px, 90vw); }
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <main class="card" role="main">
-      <!-- HERO -->
-      <section class="hero" aria-label="Hero">
-        <img src="./fondo-Fiallo.png" alt="Casa moderna con piscina al atardecer" class="bg" />
-        <!-- LOGO GRANDE A LA IZQUIERDA -->
-        <img src="./Logo.png" alt="ATC by Fiallo" class="logo" />
-        <!-- SLOGAN COMO IMAGEN SOBRE LA PISCINA (sube slogan.png al repo) -->
-        <img src="./slogan.png" alt="Protección con ingeniería. Seguridad con estilo." class="slogan" />
-      </section>
+  <div class="wrap">
+    <main class="stage">
 
-      <!-- DOS COLUMNAS: IZQUIERDA (REVIEW + STARS) / DERECHA (CALL + 305) -->
-      <section class="two-col" aria-label="Valoraciones y teléfono">
-        <div class="col" style="justify-items:start">
-          <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener" aria-label="Dejar reseña">
-            <img src="./Review.png" alt="Review" class="review-ico" />
-          </a>
-          <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener" aria-label="Cinco estrellas">
-            <img src="./Start.png" alt="Cinco estrellas" class="stars" />
-          </a>
-        </div>
-        <div class="col" style="justify-items:end">
-          <a href="tel:+17862000047" aria-label="Llamar ahora">
-            <img src="./Call.png" alt="Llamar" class="call-ico" />
-          </a>
-          <a href="tel:+17862000047" aria-label="Llamar al número principal">
-            <img src="./305.png" alt="305.362.1405" class="num" />
-          </a>
-        </div>
-      </section>
+      <!-- Fondo -->
+      <img src="./fondo-fiallo.png" alt="Fondo principal" class="bg" />
 
-      <!-- SÍGUENOS (vertical, centrado) -->
-      <section class="sig" aria-label="Síguenos">
-        <img src="./Siguenos.png" alt="Haz click! y Síguenos!!" />
-      </section>
+      <!-- Logo -->
+      <img src="./logo.png" alt="ATC by Fiallo" class="el logo" />
 
-      <!-- 5 ICONOS HORIZONTALES CON LINKS -->
-      <nav class="icons" aria-label="Redes y mapa">
-        <a href="https://atcshutters.com" target="_blank" rel="noopener" aria-label="Sitio web">
-          <img src="./Web.png" alt="Web" class="ico" />
-        </a>
-        <a href="https://www.facebook.com/atcshutters/" target="_blank" rel="noopener" aria-label="Facebook">
-          <img src="./Facebook.png" alt="Facebook" class="ico" />
-        </a>
-        <a href="https://www.instagram.com/atcbyfiallo" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="./Insta.png" alt="Instagram" class="ico" />
-        </a>
-        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank" rel="noopener" aria-label="TikTok">
-          <img src="./Tiktok.png" alt="TikTok" class="ico" />
-        </a>
-        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank" rel="noopener" aria-label="Cómo llegar">
-          <img src="./Location.png" alt="Ubicación" class="ico" />
-        </a>
-      </nav>
+      <!-- Slogan -->
+      <img src="./slogan.png" alt="Slogan ATC" class="el slogan" />
 
-      <!-- COMMERCIAL & RESIDENTIAL CENTRADO -->
-      <footer class="footer">
-        <img src="./Commercial.png" alt="COMMERCIAL & RESIDENTIAL" />
-      </footer>
+      <!-- Review + Stars -->
+      <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener">
+        <img src="./review.png" alt="Review" class="el review" />
+      </a>
+      <img src="./start.png" alt="Estrellas" class="el stars" />
+
+      <!-- Teléfono -->
+      <a href="tel:+13053621405">
+        <img src="./call.png" alt="Llamar" class="el call" />
+      </a>
+      <a href="tel:+13053621405">
+        <img src="./305.png" alt="305.362.1405" class="el num" />
+      </a>
+
+      <!-- Síguenos -->
+      <img src="./siguenos.png" alt="Síguenos" class="el sig" />
+
+      <!-- Íconos de redes -->
+      <div class="icons">
+        <a href="https://atcshutters.com" target="_blank"><img src="./web.png" alt="Web" /></a>
+        <a href="https://www.facebook.com/atcshutters/" target="_blank"><img src="./facebook.png" alt="Facebook" /></a>
+        <a href="https://www.instagram.com/atcbyfiallo" target="_blank"><img src="./insta.png" alt="Instagram" /></a>
+        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank"><img src="./tiktok.png" alt="TikTok" /></a>
+        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank"><img src="./location.png" alt="Ubicación" /></a>
+      </div>
+
+      <!-- Commercial -->
+      <img src="./commercial.png" alt="Commercial & Residential" class="commercial" />
+
     </main>
   </div>
 </body>

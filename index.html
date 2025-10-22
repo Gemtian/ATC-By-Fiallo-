@@ -21,9 +21,9 @@
     .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .el{position:absolute;display:block;filter:drop-shadow(0 5px 15px rgba(0,0,0,.3))}
 
-    /* LOGO GRANDE CENTRADO ARRIBA */
+    /* LOGO CENTRADO – BAJADO HASTA TOCAR LA PALMA */
     .logo{
-      top:0;
+      top:6.5%;                /* antes 0%; bajado para tocar la palma */
       left:50%;
       transform:translateX(-50%);
       width:85%;
@@ -37,9 +37,9 @@
       width:85%;
     }
 
-    /* REVIEW + STARS DEBAJO DE LA FOTO (en el área azul claro) */
+    /* REVIEW + STARS en franja azul */
     .review{
-      bottom:17%;         /* Altura exacta debajo del fondo fotográfico */
+      bottom:17%;
       left:10%;
       width:20%;
     }
@@ -61,7 +61,7 @@
       width:48%;
     }
 
-    /* ÍCONOS (mismo tamaño exacto) */
+    /* ÍCONOS IGUALES */
     .icons{
       position:absolute;
       left:6%;
@@ -99,13 +99,13 @@
       <!-- Fondo -->
       <img src="fondo-Fiallo.png" alt="fondo" class="bg" />
 
-      <!-- Logo -->
+      <!-- LOGO CENTRADO Y BAJADO -->
       <img src="logo.png" alt="ATC by Fiallo" class="el logo" />
 
       <!-- Slogan -->
       <img src="slogan.png" alt="slogan" class="el slogan" />
 
-      <!-- Review + Stars (DEBAJO DE LA FOTO) -->
+      <!-- Review + Stars -->
       <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener">
         <img src="review.png" alt="review" class="el review" />
       </a>

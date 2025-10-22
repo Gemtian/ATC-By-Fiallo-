@@ -3,76 +3,132 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ATC by Fiallo — Links Oficiales</title>
+  <title>ATC by Fiallo — Links</title>
   <meta name="theme-color" content="#0a3d72" />
   <style>
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; height: 100%; background: #0a1524; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter; }
-    .wrap { width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-    .stage { position: relative; width: min(430px, 95vw); aspect-ratio: 9 / 16; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); background: #000; }
-    .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .el { position: absolute; display: block; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;background:#0a1524;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter}
+    .wrap{height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .stage{
+      position:relative;
+      width:min(430px,95vw);
+      aspect-ratio:9/16;
+      overflow:hidden;
+      border-radius:20px;
+      background:#000;
+      box-shadow:0 10px 40px rgba(0,0,0,.4)
+    }
+    .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .el{position:absolute;display:block;filter:drop-shadow(0 5px 15px rgba(0,0,0,.3))}
 
-    .logo { left: 2.5%; top: 2.5%; width: 58%; max-width: 260px; }
-    .slogan { left: 50%; transform: translateX(-50%); bottom: 23%; width: 88%; }
+    /* LOGO GRANDE CENTRADO ARRIBA */
+    .logo{
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:85%;
+    }
 
-    .review { left: 5%; bottom: 15%; width: 18%; }
-    .stars  { left: 22%; bottom: 14.5%; width: 55%; }
+    /* SLOGAN sobre la piscina */
+    .slogan{
+      left:50%;
+      transform:translateX(-50%);
+      bottom:8.5%;
+      width:85%;
+    }
 
-    .call { right: 6%; bottom: 15%; width: 16%; }
-    .num  { right: 5%; bottom: 11.8%; width: 56%; }
+    /* REVIEW + STARS DEBAJO DE LA FOTO (en el área azul claro) */
+    .review{
+      bottom:17%;         /* Altura exacta debajo del fondo fotográfico */
+      left:10%;
+      width:20%;
+    }
+    .stars{
+      bottom:17%;
+      right:10%;
+      width:55%;
+    }
 
-    .sig { left: 50%; transform: translateX(-50%); bottom: 9%; width: 48%; }
+    /* CALL + NÚMERO */
+    .call{right:6%;bottom:11.5%;width:16%}
+    .num{right:5%;bottom:8.5%;width:56%}
 
-    .icons { position: absolute; left: 6%; right: 6%; bottom: 4.8%; display: flex; justify-content: space-between; align-items: center; }
-    .icons img { width: 64px; height: 64px; border-radius: 999px; filter: drop-shadow(0 5px 12px rgba(0,0,0,0.25)); transition: transform 0.2s ease; }
-    .icons img:hover { transform: scale(1.05); }
+    /* “Síguenos” */
+    .sig{
+      left:50%;
+      transform:translateX(-50%);
+      bottom:6%;
+      width:48%;
+    }
 
-    .commercial { position: absolute; left: 50%; transform: translateX(-50%); bottom: 1.8%; width: 60%; }
+    /* ÍCONOS (mismo tamaño exacto) */
+    .icons{
+      position:absolute;
+      left:6%;
+      right:6%;
+      bottom:1.5%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .icons img{
+      width:60px;
+      height:60px;
+      object-fit:contain;
+      border-radius:12px;
+      filter:drop-shadow(0 5px 12px rgba(0,0,0,.25));
+      transition:transform .2s ease;
+    }
+    .icons img:hover{transform:scale(1.05)}
 
-    @media (min-width: 768px) { .stage { width: min(500px, 90vw); } }
+    /* COMMERCIAL */
+    .commercial{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:0.2%;
+      width:60%;
+    }
+
+    @media (min-width:768px){.stage{width:min(500px,90vw)}}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <main class="stage">
-      <!-- Fondo (respetar MAYÚSCULA intermedia del archivo) -->
-      <img src="./fondo-Fiallo.png" alt="Fondo principal" class="bg" />
+    <main class="stage" role="main">
+      <!-- Fondo -->
+      <img src="fondo-Fiallo.png" alt="fondo" class="bg" />
 
       <!-- Logo -->
-      <img src="./logo.png" alt="ATC by Fiallo" class="el logo" />
+      <img src="logo.png" alt="ATC by Fiallo" class="el logo" />
 
       <!-- Slogan -->
-      <img src="./slogan.png" alt="Slogan ATC" class="el slogan" />
+      <img src="slogan.png" alt="slogan" class="el slogan" />
 
-      <!-- Review + Stars -->
+      <!-- Review + Stars (DEBAJO DE LA FOTO) -->
       <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener">
-        <img src="./review.png" alt="Review" class="el review" />
+        <img src="review.png" alt="review" class="el review" />
       </a>
-      <img src="./start.png" alt="Estrellas" class="el stars" />
+      <img src="start.png" alt="stars" class="el stars" />
 
       <!-- Teléfono -->
-      <a href="tel:+13053621405">
-        <img src="./call.png" alt="Llamar" class="el call" />
-      </a>
-      <a href="tel:+13053621405">
-        <img src="./305.png" alt="305.362.1405" class="el num" />
-      </a>
+      <a href="tel:+13053621405"><img src="call.png" alt="call" class="el call" /></a>
+      <a href="tel:+13053621405"><img src="305.png" alt="305" class="el num" /></a>
 
       <!-- Síguenos -->
-      <img src="./siguenos.png" alt="Síguenos" class="el sig" />
+      <img src="siguenos.png" alt="síguenos" class="el sig" />
 
-      <!-- Íconos de redes -->
+      <!-- ÍCONOS IGUALES -->
       <div class="icons">
-        <a href="https://atcshutters.com" target="_blank"><img src="./web.png" alt="Web" /></a>
-        <a href="https://www.facebook.com/atcshutters/" target="_blank"><img src="./facebook.png" alt="Facebook" /></a>
-        <a href="https://www.instagram.com/atcbyfiallo" target="_blank"><img src="./insta.png" alt="Instagram" /></a>
-        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank"><img src="./tiktok.png" alt="TikTok" /></a>
-        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank"><img src="./location.png" alt="Ubicación" /></a>
+        <a href="https://atcshutters.com" target="_blank" rel="noopener"><img src="web.png" alt="web" /></a>
+        <a href="https://www.facebook.com/atcshutters/" target="_blank" rel="noopener"><img src="facebook.png" alt="facebook" /></a>
+        <a href="https://www.instagram.com/atcbyfiallo" target="_blank" rel="noopener"><img src="insta.png" alt="insta" /></a>
+        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank" rel="noopener"><img src="tiktok.png" alt="tiktok" /></a>
+        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank" rel="noopener"><img src="location.png" alt="location" /></a>
       </div>
 
       <!-- Commercial -->
-      <img src="./commercial.png" alt="Commercial & Residential" class="commercial" />
+      <img src="commercial.png" alt="commercial" class="commercial" />
     </main>
   </div>
 </body>

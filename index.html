@@ -3,93 +3,91 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ATC — mismas dimensiones que Maestro</title>
-  <meta name="theme-color" content="#0a1524" />
+  <title>ATC by Fiallo — Links</title>
+  <meta name="theme-color" content="#000000" />
   <style>
     :root{
-      --stage-w: 1080;   /* valores iniciales de reserva */
-      --stage-h: 1920;   /* serán reemplazados por los de fondo-maestro.png */
+      /* Se rellenan al vuelo con el tamaño REAL del PNG */
+      --stage-w: 1080;
+      --stage-h: 1920;
       --scale: 1;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;background:#0a1524;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;overflow:hidden}
+    html,body{height:100%;background:#000;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter}
 
-    /* Contenedor centrado que escala el stage manteniendo EXACTA la proporción de Maestro */
-    .fit {
-      position:fixed; inset:0;
-      display:flex; align-items:center; justify-content:center;
-    }
-    .stage {
+    /* Contenedor centrado; el stage escala sin deformar manteniendo la proporción EXACTA del PNG */
+    .fit{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+
+    /* Lienzo con el tamaño REAL del fondo-Fiallo.png (sin bordes redondos, igual que Maestro) */
+    .stage{
       position:relative;
-      width: calc(var(--stage-w) * 1px);
-      height: calc(var(--stage-h) * 1px);
-      transform: scale(var(--scale));
-      transform-origin: center center;
-      border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.45);
+      width:calc(var(--stage-w)*1px);
+      height:calc(var(--stage-h)*1px);
+      transform:scale(var(--scale));
+      transform-origin:center center;
       overflow:hidden;
       background:#000;
     }
 
-    /* Fondo ATC dentro del stage con la misma “caja” de Maestro (sin deformar) */
-    .bg {
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit: cover; /* cubre el stage, que ya tiene las dimensiones de Maestro */
+    /* Fondo ocupando todo el stage (ya tiene la proporción del PNG) */
+    .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+    /* Elementos encima del fondo */
+    .el{position:absolute;display:block;filter:drop-shadow(0 5px 15px rgba(0,0,0,.3))}
+
+    /* LOGO — centrado y más bajo para que la franja amarilla toque la palma */
+    .logo{
+      left:50%; transform:translateX(-50%);
+      top:11.8%;          /* ajuste fino; sube/baja con ±0.5% si hace falta */
+      width:85%;
     }
 
-    /* Elementos ATC (usa lo que ya tenías, SOLO cambiaremos posiciones si quieres) */
-    .el{position:absolute; display:block; filter: drop-shadow(0 5px 15px rgba(0,0,0,.3));}
+    /* SLOGAN dentro de la foto, sobre el concreto (borde inferior de la imagen) */
+    .slogan{left:50%; transform:translateX(-50%); bottom:8.5%; width:85%}
 
-    /* LOGO (ajusta top si lo necesitas 1% arriba/abajo) */
-    .logo{ left:50%; transform:translateX(-50%); top: 12%; width: 85%; }
+    /* REVIEW + ESTRELLAS EN LA FRANJA AZUL CLARA (DEBAJO DE LA FOTO) */
+    .review{left:10%; bottom:17%; width:20%}
+    .stars {right:10%; bottom:17%; width:55%}
 
-    /* SLOGAN dentro del borde inferior de la foto/piscina */
-    .slogan{ left:50%; transform:translateX(-50%); bottom: 8.5%; width: 85%; }
+    /* TELÉFONO */
+    .call{right:6%; bottom:11.5%; width:16%}
+    .num {right:5%; bottom:8.5%;  width:56%}
 
-    /* REVIEW + STARS (zona azul clara debajo de la imagen) */
-    .review{ left:10%; bottom: 17%; width: 20%; }
-    .stars { right:10%; bottom: 17%; width: 55%; }
+    /* “SÍGUENOS” */
+    .sig{left:50%; transform:translateX(-50%); bottom:6%; width:48%}
 
-    /* Teléfono */
-    .call{ right:6%; bottom: 11.5%; width:16%; }
-    .num { right:5%; bottom:  8.5%; width:56%; }
-
-    /* Síguenos */
-    .sig{ left:50%; transform:translateX(-50%); bottom:6%; width:48%; }
-
-    /* Íconos iguales */
+    /* ÍCONOS — MISMO TAMAÑO EXACTO */
     .icons{
       position:absolute; left:6%; right:6%; bottom:1.5%;
       display:flex; justify-content:space-between; align-items:center;
     }
     .icons img{
-      width:60px; height:60px; object-fit:contain; border-radius:12px;
-      filter:drop-shadow(0 5px 12px rgba(0,0,0,.25));
+      width:60px; height:60px; object-fit:contain;
+      border-radius:12px; filter:drop-shadow(0 5px 12px rgba(0,0,0,.25));
       transition:transform .2s ease;
     }
-    .icons img:hover{ transform: scale(1.05); }
+    .icons img:hover{transform:scale(1.05)}
 
-    /* Commercial */
-    .commercial{ position:absolute; left:50%; transform:translateX(-50%); bottom:.2%; width:60%; }
+    /* COMMERCIAL & RESIDENTIAL centrado abajo */
+    .commercial{position:absolute; left:50%; transform:translateX(-50%); bottom:.2%; width:60%}
   </style>
 </head>
 <body>
-  <!-- Pre-cargador invisible para leer dimensiones REALES del Maestro -->
-  <img id="probe" src="fondo-maestro.png" alt="" style="position:absolute; left:-9999px; width:auto; height:auto;" />
+  <!-- PROBADOR INVISIBLE: lee el tamaño real del PNG correcto -->
+  <img id="probe" src="fondo-Fiallo.png" alt="" style="position:absolute;left:-10000px;width:auto;height:auto;" />
 
   <div class="fit">
     <main class="stage" id="stage">
-      <!-- Fondo ATC mostrado dentro del “marco Maestro” -->
+      <!-- Fondo correcto -->
       <img src="fondo-Fiallo.png" alt="Fondo ATC" class="bg" />
 
-      <!-- LOGO -->
-      <img src="logo.png"    alt="ATC" class="el logo" />
+      <!-- Logo -->
+      <img src="logo.png"    alt="ATC by Fiallo" class="el logo" />
 
-      <!-- SLOGAN (dentro de la foto, borde inferior) -->
+      <!-- Slogan (en la imagen, parte baja) -->
       <img src="slogan.png"  alt="slogan" class="el slogan" />
 
-      <!-- Review + Stars (franja azul clara, debajo de la imagen) -->
+      <!-- Review + Estrellas (franja azul clara, debajo de la foto) -->
       <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener">
         <img src="review.png" alt="review" class="el review" />
       </a>
@@ -102,13 +100,13 @@
       <!-- Síguenos -->
       <img src="siguenos.png" alt="siguenos" class="el sig" />
 
-      <!-- Íconos -->
-      <div class="icons" aria-label="redes y mapa">
-        <a href="https://atcshutters.com" target="_blank" rel="noopener"><img src="web.png"       alt="web" /></a>
-        <a href="https://www.facebook.com/atcshutters/" target="_blank" rel="noopener"><img src="facebook.png"  alt="facebook" /></a>
-        <a href="https://www.instagram.com/atcbyfiallo" target="_blank" rel="noopener"><img src="insta.png"     alt="instagram" /></a>
-        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank" rel="noopener"><img src="tiktok.png"    alt="tiktok" /></a>
-        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank" rel="noopener"><img src="location.png"  alt="location" /></a>
+      <!-- Íconos iguales -->
+      <div class="icons" aria-label="Redes y mapa">
+        <a href="https://atcshutters.com" target="_blank" rel="noopener"><img src="web.png"      alt="web" /></a>
+        <a href="https://www.facebook.com/atcshutters/" target="_blank" rel="noopener"><img src="facebook.png" alt="facebook" /></a>
+        <a href="https://www.instagram.com/atcbyfiallo" target="_blank" rel="noopener"><img src="insta.png"    alt="instagram" /></a>
+        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank" rel="noopener"><img src="tiktok.png"   alt="tiktok" /></a>
+        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank" rel="noopener"><img src="location.png" alt="location" /></a>
       </div>
 
       <!-- Commercial -->
@@ -117,36 +115,29 @@
   </div>
 
   <script>
-    // 1) Tomamos las dimensiones REALES del fondo de Maestro
+    // Ajusta el lienzo al tamaño REAL de fondo-Fiallo.png y lo escala a pantalla sin deformar
     const probe = document.getElementById('probe');
     const root  = document.documentElement;
-    const stage = document.getElementById('stage');
 
     function fit() {
       const vw = window.innerWidth;
       const vh = window.innerHeight;
 
-      const W = probe.naturalWidth  || 1080;  // fallback por si aún no cargó
+      const W = probe.naturalWidth  || 1080;  // fallback por si no cargó aún
       const H = probe.naturalHeight || 1920;
 
-      // Guardamos las dimensiones exactas de Maestro como variables CSS
       root.style.setProperty('--stage-w', W);
       root.style.setProperty('--stage-h', H);
 
-      // 2) Calculamos la escala máxima que cabe en la pantalla SIN deformar
       const scale = Math.min(vw / W, vh / H);
       root.style.setProperty('--scale', scale);
     }
 
-    // Al cargar la imagen de Maestro, calculamos y ajustamos
-    if (probe.complete) {
-      fit();
-    } else {
-      probe.addEventListener('load', fit);
-    }
+    if (probe.complete) fit(); else probe.addEventListener('load', fit);
     window.addEventListener('resize', fit);
     window.addEventListener('orientationchange', fit);
   </script>
 </body>
 </html>
 
+  

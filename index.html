@@ -4,140 +4,40 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>ATC by Fiallo — Links Oficiales</title>
-  <meta name="description" content="ATC by Fiallo · Impact Windows & Doors · Protección con ingeniería, seguridad con estilo. Llama, deja tu reseña y síguenos." />
   <meta name="theme-color" content="#0a3d72" />
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; height: 100%; background: #0a1524; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter; }
+    .wrap { width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+    .stage { position: relative; width: min(430px, 95vw); aspect-ratio: 9 / 16; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); background: #000; }
+    .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .el { position: absolute; display: block; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
 
-    /* === LAYOUT GENERAL === */
-    .wrap {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+    .logo { left: 2.5%; top: 2.5%; width: 58%; max-width: 260px; }
+    .slogan { left: 50%; transform: translateX(-50%); bottom: 23%; width: 88%; }
 
-    .stage {
-      position: relative;
-      width: min(430px, 95vw);
-      aspect-ratio: 9 / 16;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      background: #000;
-    }
+    .review { left: 5%; bottom: 15%; width: 18%; }
+    .stars  { left: 22%; bottom: 14.5%; width: 55%; }
 
-    /* === FONDO === */
-    .bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .call { right: 6%; bottom: 15%; width: 16%; }
+    .num  { right: 5%; bottom: 11.8%; width: 56%; }
 
-    /* === ELEMENTOS === */
-    .el {
-      position: absolute;
-      display: block;
-      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-    }
+    .sig { left: 50%; transform: translateX(-50%); bottom: 9%; width: 48%; }
 
-    /* Logo grande (izquierda arriba) */
-    .logo {
-      left: 2.5%;
-      top: 2.5%;
-      width: 58%;
-      max-width: 260px;
-    }
+    .icons { position: absolute; left: 6%; right: 6%; bottom: 4.8%; display: flex; justify-content: space-between; align-items: center; }
+    .icons img { width: 64px; height: 64px; border-radius: 999px; filter: drop-shadow(0 5px 12px rgba(0,0,0,0.25)); transition: transform 0.2s ease; }
+    .icons img:hover { transform: scale(1.05); }
 
-    /* Slogan sobre piscina */
-    .slogan {
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 23%;
-      width: 88%;
-    }
+    .commercial { position: absolute; left: 50%; transform: translateX(-50%); bottom: 1.8%; width: 60%; }
 
-    /* Review y estrellas (izquierda inferior) */
-    .review {
-      left: 5%;
-      bottom: 15%;
-      width: 18%;
-    }
-    .stars {
-      left: 22%;
-      bottom: 14.5%;
-      width: 55%;
-    }
-
-    /* Call y número (derecha inferior) */
-    .call {
-      right: 6%;
-      bottom: 15%;
-      width: 16%;
-    }
-    .num {
-      right: 5%;
-      bottom: 11.8%;
-      width: 56%;
-    }
-
-    /* Síguenos centrado */
-    .sig {
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 9%;
-      width: 48%;
-    }
-
-    /* Íconos: fila justificada */
-    .icons {
-      position: absolute;
-      left: 6%;
-      right: 6%;
-      bottom: 4.8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .icons img {
-      width: 64px;
-      height: 64px;
-      border-radius: 999px;
-      filter: drop-shadow(0 5px 12px rgba(0,0,0,0.25));
-      transition: transform 0.2s ease;
-    }
-
-    .icons img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Commercial centrado abajo */
-    .commercial {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 1.8%;
-      width: 60%;
-    }
-
-    @media (min-width: 768px) {
-      .stage { width: min(500px, 90vw); }
-    }
+    @media (min-width: 768px) { .stage { width: min(500px, 90vw); } }
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <main class="stage">
-
-      <!-- Fondo -->
-      <img src="./fondo-fiallo.png" alt="Fondo principal" class="bg" />
+      <!-- Fondo (respetar MAYÚSCULA intermedia del archivo) -->
+      <img src="./fondo-Fiallo.png" alt="Fondo principal" class="bg" />
 
       <!-- Logo -->
       <img src="./logo.png" alt="ATC by Fiallo" class="el logo" />
@@ -173,7 +73,6 @@
 
       <!-- Commercial -->
       <img src="./commercial.png" alt="Commercial & Residential" class="commercial" />
-
     </main>
   </div>
 </body>

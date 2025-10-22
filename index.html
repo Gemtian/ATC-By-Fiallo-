@@ -8,13 +8,11 @@
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;background:#000}
-
-    /* Lienzo a pantalla completa, IGUAL que Maestro (fondo en cover) */
     .stage{
       position:fixed; inset:0;
       background-image:url("fondo-Fiallo.png");
-      background-size:cover;          /* << CLAVE: llena ancho y alto, recorta sobrante */
-      background-position:center;     /* centrado como en Maestro */
+      background-size:cover;          
+      background-position:center;    
       background-repeat:no-repeat;
     }
 
@@ -23,7 +21,7 @@
     /* LOGO — más bajo para que la franja amarilla toque la palma */
     .logo{
       left:50%; transform:translateX(-50%);
-      top:12%;             /* ajusta en pasos de ±0.5% si hace falta */
+      top:8%;             /* ajusta en pasos de ±0.5% si hace falta */
       width:85vw;          /* responde al ancho de pantalla como Maestro */
       max-width:850px;
     }
@@ -31,7 +29,7 @@
     /* SLOGAN — dentro de la foto, sobre el concreto */
     .slogan{
       left:50%; transform:translateX(-50%);
-      bottom:26vh;         /* posición vertical relativa a la altura visible */
+      bottom:20vh;         /* posición vertical relativa a la altura visible */
       width:85vw; max-width:850px;
     }
 

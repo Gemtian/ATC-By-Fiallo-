@@ -3,98 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ATC by Fiallo — Impact Windows & Doors</title>
-  <meta name="description" content="ATC by Fiallo · Impact Windows & Doors · Protección con ingeniería, seguridad con estilo. Llama, deja tu reseña y síguenos." />
+  <title>ATC by Fiallo — Enlaces Oficiales</title>
   <meta name="theme-color" content="#0a3d72" />
   <style>
-    :root{
-      --bg:#0a1524; --panel:#e6f1fb; --ink:#0d2340; --accent:#ce2c2c; --radius:18px;
-    }
+    :root{ --bg:#0a1524; }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter; background:var(--bg); color:var(--ink)}
+    body{margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter; background:var(--bg)}
 
-    /* ====== LAYOUT – MOBILE FIRST (iPhone) ====== */
+    /* CONTENEDOR PRINCIPAL (mobile-first, pensado para iPhone) */
     .page{min-height:100dvh; display:grid; place-items:start center; padding:8px}
-    .card{width:min(430px, 100%); background:linear-gradient(#dff0ff, #eaf4ff 40%, #dbeafe 100%); border-radius:24px; overflow:hidden; box-shadow:0 18px 50px rgba(0,0,0,.35)}
+    .card{width:min(430px,100%); background:linear-gradient(#dff0ff, #eaf4ff 40%, #dbeafe 100%); border-radius:22px; overflow:hidden; box-shadow:0 18px 50px rgba(0,0,0,.35)}
 
-    /* HERO */
+    /* HERO: fondo + LOGO a la IZQUIERDA + SLOGAN.png sobre la piscina */
     .hero{position:relative; isolation:isolate}
-    .hero img.bg{width:100%; height:auto; display:block}
-    .hero::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(3,15,30,.55) 0%, rgba(3,15,30,.1) 42%, rgba(230,241,251,1) 88%)}
-    .hero .top{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding:14px; z-index:2}
-    .logo{width:min(86%, 520px); max-width:340px; filter:drop-shadow(0 8px 16px rgba(0,0,0,.35)); margin-top:6px}
-    .headline{margin-top:8px; font-weight:800; letter-spacing:.8px; color:#991b1b; text-shadow:0 2px 0 rgba(255,255,255,.65), 0 6px 18px rgba(0,0,0,.35); font-size:clamp(18px, 5.2vw, 28px); text-align:center}
-    .claim{position:absolute; left:0; right:0; bottom:12%; padding:0 14px; z-index:2; text-align:center; color:#ffffff; font-weight:800; font-size:clamp(16px, 4.2vw, 24px); text-shadow:0 2px 0 rgba(0,0,0,.8), 0 10px 24px rgba(0,0,0,.6)}
+    .hero .bg{width:100%; height:auto; display:block}
+    .hero .logo{position:absolute; left:10px; top:10px; width:min(58%, 250px); max-width:260px; filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
+    /* Slogan imagen sobre la piscina: ajusta top segun veas en el telefono */
+    .hero .slogan{position:absolute; left:50%; transform:translateX(-50%); bottom:12%; width:min(92%, 360px); max-width:360px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
 
-    /* SECTION – REVIEWS + PHONE */
-    .section{padding:14px 16px 6px; display:grid; row-gap:10px}
-    .row{display:flex; align-items:center; justify-content:center; gap:12px}
-    .round{width:64px; height:64px; border-radius:999px; display:block; filter:drop-shadow(0 8px 18px rgba(0,0,0,.25))}
-    .stars{height:36px}
-    .subtle{font-size:14px; color:#0b2547; text-align:center}
+    /* SECCION RESEÑAS + TELEFONO en dos columnas */
+    .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:12px; padding:12px 14px 4px}
+    .col{display:grid; justify-items:center; align-items:start; gap:8px}
+    .review-ico{width:64px; height:64px; border-radius:999px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.28))}
+    .stars{height:36px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.18))}
+    .call-ico{width:62px; height:62px; border-radius:999px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.28))}
+    .num{width:min(92%, 360px); max-width:300px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.18))}
 
-    .phone{display:flex; align-items:center; justify-content:center; gap:12px; margin-top:2px}
-    .phone .call{width:58px; height:58px; border-radius:999px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.25))}
-    .phone .num{width:min(92%, 560px); max-width:360px; display:block; filter:drop-shadow(0 10px 24px rgba(0,0,0,.25))}
+    /* SÍGUENOS (vertical, centrado) */
+    .sig{display:grid; place-items:center; padding:4px 14px}
+    .sig img{height:28px}
 
-    /* SECTION – FOLLOW */
-    .follow{padding:4px 16px 14px}
-    .follow .tag{display:block; margin:6px auto 10px; height:28px}
-    .grid-icons{display:grid; grid-template-columns: repeat(5, 1fr); gap:12px; justify-items:center}
-    .grid-icons a{display:inline-grid; place-items:center; transform:translateY(0); transition:transform .18s ease}
-    .grid-icons a:hover{transform:translateY(-3px)}
-    .ico{width:64px; height:64px; border-radius:999px; display:block; filter:drop-shadow(0 10px 20px rgba(0,0,0,.25)); animation:float 5.2s ease-in-out infinite}
-    .grid-icons a:nth-child(2) .ico{animation-delay:.4s}
-    .grid-icons a:nth-child(3) .ico{animation-delay:.8s}
-    .grid-icons a:nth-child(4) .ico{animation-delay:1.2s}
-    .grid-icons a:nth-child(5) .ico{animation-delay:1.6s}
+    /* CINCO ICONOS HORIZONTALES, JUSTIFICADOS */
+    .icons{display:grid; grid-template-columns: repeat(5, 1fr); gap:12px; justify-items:center; padding:8px 14px 14px}
+    .icons a{display:grid; place-items:center}
+    .ico{width:64px; height:64px; border-radius:999px; filter:drop-shadow(0 10px 20px rgba(0,0,0,.25)); animation:float 5s ease-in-out infinite}
+    .icons a:nth-child(2) .ico{animation-delay:.3s}
+    .icons a:nth-child(3) .ico{animation-delay:.6s}
+    .icons a:nth-child(4) .ico{animation-delay:.9s}
+    .icons a:nth-child(5) .ico{animation-delay:1.2s}
     @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
 
-    /* SECTION – FOOTER LABEL */
-    .footer{padding:0 16px 18px; display:grid; place-items:center}
-    .footer img{height:26px; opacity:.95}
+    /* COMMERCIAL & RESIDENTIAL centrado al final */
+    .footer{display:grid; place-items:center; padding:0 14px 18px}
+    .footer img{height:26px; opacity:.98}
 
-    /* ====== DESKTOP UPSCALE ====== */
+    /* Desktop suave */
     @media (min-width:768px){
-      .card{width:min(560px, 100%)}
-      .logo{max-width:420px}
-      .stars{height:40px}
-      .phone .num{max-width:420px}
+      .card{width:min(560px,100%)}
+      .hero .logo{left:16px; top:16px; max-width:320px}
+      .hero .slogan{bottom:14%}
       .ico{width:70px; height:70px}
-      .round{width:70px; height:70px}
+      .review-ico{width:70px; height:70px}
+      .call-ico{width:68px; height:68px}
+      .stars{height:42px}
+      .num{max-width:340px}
     }
   </style>
 </head>
 <body>
   <div class="page">
     <main class="card" role="main">
-      <!-- HERO con fondo + logo + titular + slogan -->
+      <!-- HERO -->
       <section class="hero" aria-label="Hero">
         <img src="./fondo-Fiallo.png" alt="Casa moderna con piscina al atardecer" class="bg" />
-        <div class="top">
-          <img src="./Logo.png" alt="ATC by Fiallo" class="logo" />
-          <div class="headline">IMPACT WINDOWS &amp; DOORS</div>
-        </div>
-        <div class="claim">“PROTECCIÓN CON INGENIERÍA. SEGURIDAD CON ESTILO.”</div>
+        <!-- LOGO GRANDE A LA IZQUIERDA -->
+        <img src="./Logo.png" alt="ATC by Fiallo" class="logo" />
+        <!-- SLOGAN COMO IMAGEN SOBRE LA PISCINA (sube slogan.png al repo) -->
+        <img src="./slogan.png" alt="Protección con ingeniería. Seguridad con estilo." class="slogan" />
       </section>
 
-      <!-- Reviews -->
-      <section class="section" aria-label="Valoración y contacto">
-        <div class="row">
-          <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener" aria-label="Dejar reseña en Google">
-            <img src="./Review.png" alt="Pulgar arriba" class="round" />
+      <!-- DOS COLUMNAS: IZQUIERDA (REVIEW + STARS) / DERECHA (CALL + 305) -->
+      <section class="two-col" aria-label="Valoraciones y teléfono">
+        <div class="col" style="justify-items:start">
+          <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener" aria-label="Dejar reseña">
+            <img src="./Review.png" alt="Review" class="review-ico" />
           </a>
-          <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener" aria-label="Reseñas cinco estrellas">
+          <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener" aria-label="Cinco estrellas">
             <img src="./Start.png" alt="Cinco estrellas" class="stars" />
           </a>
         </div>
-        <div class="subtle">PL<span style="text-transform:lowercase">ease</span> rate our service!!</div>
-
-        <!-- Teléfono grande -->
-        <div class="phone">
+        <div class="col" style="justify-items:end">
           <a href="tel:+17862000047" aria-label="Llamar ahora">
-            <img src="./Call.png" alt="Llamar" class="call" />
+            <img src="./Call.png" alt="Llamar" class="call-ico" />
           </a>
           <a href="tel:+17862000047" aria-label="Llamar al número principal">
             <img src="./305.png" alt="305.362.1405" class="num" />
@@ -102,32 +93,34 @@
         </div>
       </section>
 
-      <!-- Síguenos + iconos -->
-      <section class="follow" aria-label="Síguenos">
-        <img src="./Siguenos.png" alt="Haz click! y Síguenos!!" class="tag" />
-        <nav class="grid-icons" aria-label="Redes y mapa">
-          <a href="https://atcshutters.com" target="_blank" rel="noopener" aria-label="Sitio web">
-            <img src="./Web.png" alt="Web" class="ico" />
-          </a>
-          <a href="https://www.facebook.com/atcshutters/" target="_blank" rel="noopener" aria-label="Facebook">
-            <img src="./Facebook.png" alt="Facebook" class="ico" />
-          </a>
-          <a href="https://www.instagram.com/atcbyfiallo" target="_blank" rel="noopener" aria-label="Instagram">
-            <img src="./Insta.png" alt="Instagram" class="ico" />
-          </a>
-          <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank" rel="noopener" aria-label="TikTok">
-            <img src="./Tiktok.png" alt="TikTok" class="ico" />
-          </a>
-          <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank" rel="noopener" aria-label="Cómo llegar">
-            <img src="./Location.png" alt="Ubicación" class="ico" />
-          </a>
-        </nav>
+      <!-- SÍGUENOS (vertical, centrado) -->
+      <section class="sig" aria-label="Síguenos">
+        <img src="./Siguenos.png" alt="Haz click! y Síguenos!!" />
       </section>
 
-      <!-- Footer label -->
-      <div class="footer">
-        <img src="./Commercial.png" alt="Commercial & Residential" />
-      </div>
+      <!-- 5 ICONOS HORIZONTALES CON LINKS -->
+      <nav class="icons" aria-label="Redes y mapa">
+        <a href="https://atcshutters.com" target="_blank" rel="noopener" aria-label="Sitio web">
+          <img src="./Web.png" alt="Web" class="ico" />
+        </a>
+        <a href="https://www.facebook.com/atcshutters/" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="./Facebook.png" alt="Facebook" class="ico" />
+        </a>
+        <a href="https://www.instagram.com/atcbyfiallo" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="./Insta.png" alt="Instagram" class="ico" />
+        </a>
+        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank" rel="noopener" aria-label="TikTok">
+          <img src="./Tiktok.png" alt="TikTok" class="ico" />
+        </a>
+        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank" rel="noopener" aria-label="Cómo llegar">
+          <img src="./Location.png" alt="Ubicación" class="ico" />
+        </a>
+      </nav>
+
+      <!-- COMMERCIAL & RESIDENTIAL CENTRADO -->
+      <footer class="footer">
+        <img src="./Commercial.png" alt="COMMERCIAL & RESIDENTIAL" />
+      </footer>
     </main>
   </div>
 </body>

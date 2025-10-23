@@ -53,13 +53,19 @@
 
     /* REVIEW + ESTRELLAS en franja azul clara
        -> TAMAÑO ORIGINAL para review y call (NO se escalan) */
-    .review{ left:7%;  bottom:28%; width:20%; }  /* tamaño intrínseco */
-    .stars { right:14%; bottom:28%; width:60%; }               /* proporcional */
+    .review{
+      left:7%;  bottom:28%;
+      width:auto; height:auto;                /* tamaño intrínseco PNG */
+    }
+    .stars { right:14%; bottom:28%; width:60%; } /* proporcional como lo tenías */
 
     /* Teléfono (icono + número comparten link)
        -> call tamaño original (intrínseco); num flota/proporcional */
     .phone a{ display:contents; }
-   .call{ left:7%; bottom:18%; width:20%; }    /* tamaño intrínseco */
+    .call{
+      left:7%;  bottom:18%;
+      width:auto; height:auto;                /* tamaño intrínseco PNG */
+    }
     .num {
       right:14%; bottom:20%; width:56%;
       animation:floatPulse 2.2s ease-in-out infinite;

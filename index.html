@@ -57,17 +57,19 @@
     .num {right:14vw; bottom:20vh; width:56vw; max-width:860px;  /* <-- corregido */
     animation: floatPulse 2.2s ease-in-out infinite;
       transform-origin:center center;filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
-    /* “SÍGUENOS” */
-    .sig{left:50%; transform:translateX(-50%); bottom:14vh; width:48vw; max-width:560px}
- }
-    @keyframes floatPulse{
+         }
+          @keyframes floatPulse{
       0%   { transform:translateY(0)    scale(1);    }
       50%  { transform:translateY(-0.8vh) scale(1.03); }
       100% { transform:translateY(0)    scale(1);    }
     }
+    
+    /* “SÍGUENOS” */
+    sig{left:50%; transform:translateX(-50%); bottom:13vh; width:48vw; max-width:520px}
+    
     /* ÍCONOS — idéntico tamaño */
     .icons{
-      position:absolute; left:6vw; right:6vw; bottom:4vh;
+      position:absolute; left:6vw; right:6vw; bottom:3vh;
       display:flex; justify-content:space-between; align-items:center;
     }
     .icons img{

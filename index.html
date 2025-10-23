@@ -1,4 +1,4 @@
-<!doctype html>  
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -6,6 +6,12 @@
   <title>ATC by Fiallo — Links</title>
   <meta name="theme-color" content="#000000" />
   <style>
+    /* ===== Config global ===== */
+    :root{
+      /* Un único control para TODOS los círculos */
+      --circle: clamp(88px, 10vw, 120px);      /* mismo tamaño en móvil y desktop */
+    }
+
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{
       height:100%; overflow:hidden; background:#000;
@@ -17,11 +23,11 @@
     .bg{
       position:fixed; inset:0;
       background:url("fondo-Fiallo.png") center/cover no-repeat;
-      pointer-events:none;
+      pointer-events:none; /* deja pasar clicks a la HUD */
     }
     .bg .logo{
       position:absolute; left:50%; transform:translateX(-50%);
-      top:1.9%;                        /* baja/sube en pasos de ±0.5% si quieres */
+      top:1.9%;                       /* ajusta ±0.5% si hace falta */
       width:85vw; max-width:860px;
       filter:drop-shadow(0 5px 15px rgba(0,0,0,.35));
     }
@@ -36,33 +42,28 @@
       position:relative;
       width:min(100vw, calc(100vh * 9 / 16));
       height:min(100vh, calc(100vw * 16 / 9));
-      pointer-events:auto;
+      pointer-events:auto;  /* la HUD sí recibe clicks */
     }
 
-    .el{
-      position:absolute; display:block;
-      filter:drop-shadow(0 5px 15px rgba(0,0,0,.3));
-      -webkit-user-drag:none; user-drag:none;
-    }
+    /* ===== Utilidades ===== */
+    .el{ position:absolute; display:block; filter:drop-shadow(0 5px 15px rgba(0,0,0,.3)); }
+    .circle{ width:var(--circle); height:var(--circle); object-fit:contain; border-radius:999px; }
 
-    /* === Elementos amarrados (coordenadas en % del HUD) === */
+    /* ===== Elementos amarrados (coordenadas en % del HUD) ===== */
+    /* Slogan (dentro de la imagen, sobre el concreto) */
     .slogan{ left:50%; transform:translateX(-50%); bottom:39%; width:85%; }
 
-    /* Review + Estrellas (review conserva tamaño PNG, con tope en desktop) */
-    .review{left:7%; bottom:28%; width:20vw; max-width:60px; width:auto; height:auto; max-width:80px;   /* <-- evita que explote en desktop */
-    }
-    .stars{ right:14%; bottom:28%; width:60%; }
+    /* Review + Estrellas (franja azul claro) */
+    .review{ left:7%;  bottom:28%; }
+    .stars { right:14%; bottom:28%; width:60%; }
 
-    /* Teléfono (dos enlaces separados; SIN display:contents) */
-    .call{right:14vw; bottom:28vh; width:60vw; max-width:60px; width:auto; height:auto; max-width:80px;   /* <-- tope para desktop */
-      z-index:3;
-    }
-    .num{
-      right:14%; bottom:20%; width:56%;
+    /* Teléfono (icono + número) */
+    .call{ left:7%;  bottom:18%; z-index:3; }
+    .num {
+      right:14%; bottom:20%; width:56%; z-index:2;
       animation:floatPulse 2.2s ease-in-out infinite;
       transform-origin:center;
       filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));
-      z-index:2;
     }
     @keyframes floatPulse{
       0%{transform:translateY(0) scale(1)}
@@ -70,19 +71,18 @@
       100%{transform:translateY(0) scale(1)}
     }
 
+    /* “Síguenos” */
     .siguenos{ left:50%; transform:translateX(-50%); bottom:14%; width:48%; }
 
+    /* Íconos inferiores (todos del mismo tamaño que review/call) */
     .icons{
       position:absolute; left:6%; right:6%; bottom:4%;
       display:flex; justify-content:space-between; align-items:center;
     }
-    .icons img{
-      width:60px; height:60px; object-fit:contain; border-radius:12px;
-      filter:drop-shadow(0 5px 12px rgba(0,0,0,.25));
-      transition:transform .2s ease;
-    }
+    .icons img{ width:var(--circle); height:var(--circle); object-fit:contain; border-radius:999px; transition:transform .2s ease; }
     .icons img:hover{ transform:scale(1.05) }
 
+    /* Commercial & Residential */
     .commercial{ position:absolute; left:50%; transform:translateX(-50%); bottom:.8%; width:60%; }
 
     @media (prefers-reduced-motion:reduce){
@@ -97,21 +97,22 @@
     <img src="logo.png" alt="ATC by Fiallo" class="logo" />
   </div>
 
-  <!-- CAPA 2: HUD 9:16 -->
+  <!-- CAPA 2: HUD 9:16 (fija) -->
   <div class="hud-wrap">
     <main class="hud" role="main" aria-label="Overlay de acciones">
+
       <!-- Slogan -->
       <img src="slogan.png" alt="slogan" class="el slogan" />
 
       <!-- Review + Estrellas -->
       <a href="https://search.google.com/local/writereview?placeid=ChIJUZ46Yi-72YgR83nsKLunqNI" target="_blank" rel="noopener">
-        <img src="review.png" alt="review" class="el review" />
+        <img src="review.png" alt="review" class="el circle review" />
       </a>
       <img src="start.png" alt="stars" class="el stars" />
 
-      <!-- Teléfono (dos enlaces separados; tamaños capados) -->
+      <!-- Teléfono -->
       <a href="tel:+13053621405">
-        <img src="call.png" alt="Llamar" class="el call" />
+        <img src="call.png" alt="Llamar" class="el circle call" />
       </a>
       <a href="tel:+13053621405">
         <img src="305.png" alt="305.362.1405" class="el num" />
@@ -120,13 +121,13 @@
       <!-- Síguenos -->
       <img src="siguenos.png" alt="síguenos" class="el siguenos" />
 
-      <!-- Íconos -->
+      <!-- Íconos inferiores (mismo tamaño que review/call) -->
       <nav class="icons" aria-label="Redes y mapa">
-        <a href="https://atcshutters.com" target="_blank" rel="noopener"><img src="web.png"      alt="web" /></a>
-        <a href="https://www.facebook.com/atcshutters/" target="_blank" rel="noopener"><img src="facebook.png" alt="facebook" /></a>
-        <a href="https://www.instagram.com/atcbyfiallo" target="_blank" rel="noopener"><img src="insta.png"    alt="instagram" /></a>
-        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank" rel="noopener"><img src="tiktok.png"   alt="tiktok" /></a>
-        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank" rel="noopener"><img src="location.png" alt="location" /></a>
+        <a href="https://atcshutters.com" target="_blank" rel="noopener"><img src="web.png"      alt="web"      class="circle" /></a>
+        <a href="https://www.facebook.com/atcshutters/" target="_blank" rel="noopener"><img src="facebook.png" alt="facebook"  class="circle" /></a>
+        <a href="https://www.instagram.com/atcbyfiallo" target="_blank" rel="noopener"><img src="insta.png"    alt="instagram" class="circle" /></a>
+        <a href="https://www.tiktok.com/@aluminumtechnologies" target="_blank" rel="noopener"><img src="tiktok.png"   alt="tiktok"   class="circle" /></a>
+        <a href="https://maps.google.com/?q=ATC+Shutters+Hialeah+FL+33018" target="_blank" rel="noopener"><img src="location.png" alt="location" class="circle" /></a>
       </nav>
 
       <!-- Commercial -->
@@ -136,3 +137,4 @@
 
 </body>
 </html>
+

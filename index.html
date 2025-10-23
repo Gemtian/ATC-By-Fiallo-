@@ -13,31 +13,31 @@
       -webkit-user-select:none; user-select:none; -webkit-touch-callout:none;
     }
 
-    /* ===== CAPA 1: FONDO + LOGO (fluid) ===== */
+    /* ===== CAPA 1: FONDO + LOGO (fluyen) ===== */
     .bg{
       position:fixed; inset:0;
       background:url("fondo-Fiallo.png") center/cover no-repeat;
-      pointer-events:none;         /* deja pasar los clicks a la HUD */
+      pointer-events:none;                    /* deja pasar clicks a la HUD */
     }
     .bg .logo{
       position:absolute; left:50%; transform:translateX(-50%);
-      top:1.9%;                    /* ajusta en pasos de ±0.5% si hace falta */
-      width:85vw; max-width:860px; /* LOGO sigue siendo fluido */
+      top:1.9%;                               /* ajusta ±0.5% si hace falta */
+      width:85vw; max-width:860px;            /* LOGO fluido */
       filter:drop-shadow(0 5px 15px rgba(0,0,0,.35));
     }
 
-    /* ===== CAPA 2: HUD BLOQUEADA (amarrada) =====
-       Stage 9:16 que se escala y centra. Aquí va TODO lo que no debe moverse. */
+    /* ===== CAPA 2: HUD BLOQUEADA (amarrada) ===== */
     .hud-wrap{
-      position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
-      pointer-events:none;         /* por defecto no capta clicks… */
+      position:fixed; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      pointer-events:none;                    /* por defecto no capta clicks */
     }
     .hud{
       position:relative;
       width:min(100vw, calc(100vh * 9 / 16));
       height:min(100vh, calc(100vw * 16 / 9));
-      /* el HUD es transparente: se ve el fondo de la capa 1 */
-      pointer-events:auto;         /* …excepto la maqueta, sí recibe clicks */
+      pointer-events:auto;                    /* la HUD sí recibe clicks */
+      /* transparente: se ve el fondo */
     }
 
     .el{
@@ -46,18 +46,20 @@
       -webkit-user-drag:none; user-drag:none;
     }
 
-    /* === Elementos AMARRADOS dentro del HUD (valores en % del HUD) === */
+    /* === Elementos AMARRADOS (coordenadas en % del HUD) === */
 
-    /* SLOGAN sobre el concreto/piscina */
+    /* SLOGAN dentro de la foto */
     .slogan{ left:50%; transform:translateX(-50%); bottom:39%; width:85%; }
 
-    /* Review + Estrellas en franja azul clara */
-    .review{ left:7%;  bottom:28%; width:20%; }
-    .stars { right:14%; bottom:28%; width:60%; }
+    /* REVIEW + ESTRELLAS en franja azul clara
+       -> TAMAÑO ORIGINAL para review y call (NO se escalan) */
+    .review{ left:7%;  bottom:28%; width:auto; height:auto; }  /* tamaño intrínseco */
+    .stars { right:14%; bottom:28%; width:60%; }               /* proporcional */
 
-    /* Teléfono con efecto flotante (icono + número comparten link) */
+    /* Teléfono (icono + número comparten link)
+       -> call tamaño original (intrínseco); num flota/proporcional */
     .phone a{ display:contents; }
-    .call{ left:7%; bottom:18%; width:20%; }
+    .call{ left:7%;  bottom:18%; width:auto; height:auto; }    /* tamaño intrínseco */
     .num {
       right:14%; bottom:20%; width:56%;
       animation:floatPulse 2.2s ease-in-out infinite;
@@ -70,10 +72,10 @@
       100%{transform:translateY(0) scale(1)}
     }
 
-    /* “Síguenos” */
+    /* “Síguenos” (proporcional) */
     .siguenos{ left:50%; transform:translateX(-50%); bottom:14%; width:48%; }
 
-    /* Íconos — MISMO tamaño exacto y espaciados */
+    /* Íconos — MISMO tamaño exacto */
     .icons{
       position:absolute; left:6%; right:6%; bottom:4%;
       display:flex; justify-content:space-between; align-items:center;
@@ -83,19 +85,26 @@
       filter:drop-shadow(0 5px 12px rgba(0,0,0,.25));
       transition:transform .2s ease;
     }
-    .icons img:hover{ transform:scale(1.05) } /* pequeño hover sin romper layout */
+    .icons img:hover{ transform:scale(1.05) } /* hover suave sin romper nada */
 
-    /* Commercial & Residential */
+    /* Commercial & Residential (proporcional) */
     .commercial{ position:absolute; left:50%; transform:translateX(-50%); bottom:.8%; width:60%; }
 
     @media (prefers-reduced-motion:reduce){
       .icons img, .num{ transition:none; animation:none }
     }
+
+    /* === OPCIONAL: si también quieres estos en tamaño intrínseco, descomenta ===
+    .slogan   { width:auto; height:auto; }
+    .siguenos { width:auto; height:auto; }
+    .stars    { width:auto; height:auto; }  // sólo si tu PNG de estrellas ya es el ancho final
+    .commercial{ width:auto; height:auto; }
+    */
   </style>
 </head>
 <body>
 
-  <!-- CAPA 1: Fondo + Logo (fluyen con la pantalla) -->
+  <!-- CAPA 1: Fondo + Logo (fluid) -->
   <div class="bg" aria-hidden="true">
     <img src="logo.png" alt="ATC by Fiallo" class="logo" />
   </div>
@@ -103,6 +112,7 @@
   <!-- CAPA 2: HUD 9:16 (amarrada, no se desordena) -->
   <div class="hud-wrap">
     <main class="hud" role="main" aria-label="Overlay de acciones">
+
       <!-- Slogan -->
       <img src="slogan.png" alt="slogan" class="el slogan" />
 

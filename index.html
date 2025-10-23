@@ -80,8 +80,13 @@
       display:flex; justify-content:space-between; align-items:center;
     }
     .icons img{ width:var(--circle); height:var(--circle); object-fit:contain; border-radius:999px; transition:transform .2s ease; }
-    .icons img:hover{ transform:scale(1.05) }
+    /* transición suave para todos los círculos */
+.circle{ transition: transform .2s ease }
 
+/* hover global para todos los círculos (incluye review y call) */
+.circle:hover{
+  transform: scale(1.08);
+}
     /* Commercial & Residential */
     .commercial{ position:absolute; left:50%; transform:translateX(-50%); bottom:.8%; width:60%; }
 
